@@ -34,7 +34,7 @@ public class Client {
 	public static void main(String[] args) {
 		new Client();
 	
-	System.out.println("oi");
+	System.out.println("oi dkjjnasdjkaksdjksdjk");
 	}
 	
 
