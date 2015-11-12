@@ -1,7 +1,7 @@
 
 public enum MessageState{
 
-SENT("✓"), DELIVERED("✓✓");
+SENT("✓"), DELIVERED("✓✓"), PENDING("-");
 
 	private final String state;
 	

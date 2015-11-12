@@ -7,8 +7,8 @@ public class Message {
 
 	public Message(Contact receiver, String messageSent) {
 		
-		messageState = null;
-		this.receiver =receiver;
+		messageState = MessageState.PENDING;
+		this.receiver =	receiver;
 		setMessageText(messageSent);
 		
 	}

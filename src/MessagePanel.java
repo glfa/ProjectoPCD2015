@@ -55,15 +55,10 @@ public class MessagePanel extends JPanel {
 		writingTextField.addKeyListener(new KeyAdapter() {
 			@Override
 			public void keyPressed(KeyEvent arg0) {
-				String messageSent = "Me: " + writingTextField.getText();
 				if(arg0.getKeyCode() == KeyEvent.VK_ENTER){
 					writeMessage();
 				}
 			};
-
-
-
-
 		});
 
 		writingPanel.add(writingTextField, BorderLayout.CENTER);
@@ -80,9 +75,6 @@ public class MessagePanel extends JPanel {
 		Contact contact = clientWindow.getContactsPanel().getContactsList().getSelectedValue();
 		
 		Message message = new Message(contact, messageSent);
-
-
-
 
 		contact.getMessages().add(message);
 
