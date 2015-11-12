@@ -24,7 +24,6 @@ public class MessagePanel extends JPanel {
 	JTextArea readingTextArea;
 	ClientWindow clientWindow;
 	ButtonActionListener listener;
-	MessageState messageState;
 
 	public MessagePanel(ClientWindow clientWindow) {
 		this.clientWindow = clientWindow;
