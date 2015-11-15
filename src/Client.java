@@ -5,8 +5,6 @@ public class Client {
 
 
 	private String name;
-	private ClientWindow window;
-
 	public Client() {
 
 		settingUpClient();
@@ -15,7 +13,7 @@ public class Client {
 	}
 
 	private void settingUpWindow() {
-		window = new ClientWindow(this);
+		new ClientWindow(this);
 	}
 
 	private void settingUpClient() {

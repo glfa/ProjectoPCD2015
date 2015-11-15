@@ -2,6 +2,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 
+@SuppressWarnings("serial")
 public class Contact implements Serializable{
 
 	private String name;
