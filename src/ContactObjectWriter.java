@@ -3,30 +3,34 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+import javax.swing.DefaultListModel;
+
 public class ContactObjectWriter{
 
 
 	private String filePath;
-	private ArrayList<Contact> contactsList;
+	private DefaultListModel<Contact> contactsList;
 
 	/**
 	 * @param filePath
-	 * @param contactsList
+	 * @param contactsListModel
 	 */
-	public ContactObjectWriter(String filePath, ArrayList<Contact> contactsList) {
+	public ContactObjectWriter(String filePath, DefaultListModel<Contact> contactsListModel) {
 		super();
 		this.filePath = filePath;
-		this.contactsList = contactsList;
+		this.contactsList = contactsListModel;
 	}
 
 	public void saveContactsToFile(){
-
+		
+		ArrayList<Contact> contactsArrayList = DLMtoArrayList(contactsList);
+		
 		try {
 			FileOutputStream fos = new FileOutputStream(filePath);
 			ObjectOutputStream out = new ObjectOutputStream(fos); 
-			for (Contact contact : contactsList) {
+		
+			for (Contact contact : contactsArrayList) {
 				out.writeObject(contact);
-				System.out.println("gravei o: " + contact);
 			}
 			out.close();
 		}
@@ -35,25 +39,21 @@ public class ContactObjectWriter{
 		}
 	}
 
-
-
-	public static void main(String[] args) {
-
-
-
-
-		ArrayList<Contact> contactsList = new ArrayList<Contact>();
-		contactsList.add(new Contact("Mario"));
-		contactsList.add(new Contact("Rui"));
-
-		ContactObjectWriter contactObjectWriter = new ContactObjectWriter("/Users/GLFA/Documents/ISCTE/Workspace/ProjectoPCD2015/src/contact.ser", 
-				contactsList);
-
-		contactObjectWriter.saveContactsToFile();
+	/**
+	 * Converts a DefaultListModel list into a ArrayList.
+	 * @param contactDLM
+	 * @return ArrayList 
+	 */
+	private ArrayList<Contact> DLMtoArrayList(DefaultListModel<Contact> contactDLM){
 		
-		ContactObjectReader contactObjectReader = new ContactObjectReader("/Users/GLFA/Documents/ISCTE/Workspace/ProjectoPCD2015/src/contact.ser", 
-				contactsList);
+		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
-		contactObjectReader.loadContacts();
+		for (int i = 0; i < contactDLM.getSize(); i++) {
+			contacts.add(contactDLM.getElementAt(i));
+		}
+		
+		
+		return contacts;
 	}
 }
+

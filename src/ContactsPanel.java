@@ -104,45 +104,14 @@ public class ContactsPanel extends JPanel{
 	}
 
 	public void loadContacts(){
-
-		BufferedReader br = null;
-		String line = "";
-		String separator = ";";
-
-		try {
-
-			br = new BufferedReader(new FileReader("/Users/GLFA/Documents/ISCTE/Workspace/ProjectoPCD2015/src/ContactsList.csv"));
-			while ((line = br.readLine()) != null) {
-				String[] contactName = line.split(separator);
-
-				contactsListModel.addElement(new Contact(contactName[0]));
-
-				System.out.println( );
-
-			}
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (br != null) {
-				try {
-					br.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
+		ContactObjectReader reader = new ContactObjectReader("/Users/GLFA/Documents/ISCTE/Workspace/ProjectoPCD2015/src/contact.ser",
+				contactsListModel);
+		reader.loadContacts();
 	}
 
 	public void saveContacts(){
-
-		for (int i = 0; i < contactsListModel.getSize(); i++) {
-			System.out.println(contactsListModel.get(i));
-		}
+		ContactObjectWriter writer = new ContactObjectWriter("/Users/GLFA/Documents/ISCTE/Workspace/ProjectoPCD2015/src/contact.ser",
+				contactsListModel);
 		
 	}
 
