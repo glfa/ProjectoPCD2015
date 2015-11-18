@@ -35,7 +35,7 @@ public class Message {
 	}
 
 	public void setMessageText(String messageText) {
-		this.messageText = messageText;
+		this.messageText = messageText + " " + messageState;
 	}
 
 	public void setMessageState(MessageState messageState) {

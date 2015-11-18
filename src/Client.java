@@ -5,11 +5,10 @@ public class Client {
 
 
 	private String name;
+	
 	public Client() {
-
 		settingUpClient();
 		settingUpWindow();
-
 	}
 
 	private void settingUpWindow() {

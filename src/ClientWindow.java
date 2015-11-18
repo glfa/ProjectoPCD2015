@@ -1,6 +1,3 @@
-
-
-
 import java.awt.BorderLayout;
 
 import javax.swing.JFrame;
@@ -11,12 +8,7 @@ public class ClientWindow {
 	private MessagePanel messagePanel;
 	private JFrame frame;
 	private Client client;
-	
-	
-	/**
-	 * @param contactsPanel
-	 * @param messagePanel
-	 */
+
 	public ClientWindow(Client client) {
 		super();
 		this.client = client;
@@ -35,8 +27,6 @@ public class ClientWindow {
 	public MessagePanel getMessagePanel() {
 		return messagePanel;
 	}
-
-	
 
 	private void createWindow() {
 		frame = new JFrame("QuequeApp | " + client.getName() + " | Status: ");
