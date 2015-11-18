@@ -4,21 +4,15 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.Collections;
-import java.util.List;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
-import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -89,13 +83,12 @@ public class ContactsPanel extends JPanel{
 	}
 
 	/**
-	 * Creates the contacts label and loads the contacts from a .csv file.
+	 * Implementa a 
 	 */
 	private void setContactsLabel() {
 		contactsLabel = new JLabel("Contacts:");
 		contactsLabel.setOpaque(true);
 		contactsLabel.setBackground(Color.WHITE);
-
 		add(contactsLabel, BorderLayout.NORTH);
 	}
 
@@ -104,15 +97,13 @@ public class ContactsPanel extends JPanel{
 	}
 
 	public void loadContacts(){
-		ContactObjectReader reader = new ContactObjectReader("/Users/GLFA/Documents/ISCTE/Workspace/ProjectoPCD2015/src/contact.ser",
+		ContactObjectReader.loadContacts("/Users/GLFA/Documents/ISCTE/Workspace/ProjectoPCD2015/src/contact.ser",
 				contactsListModel);
-		reader.loadContacts();
 	}
 
 	public void saveContacts(){
-		ContactObjectWriter writer = new ContactObjectWriter("/Users/GLFA/Documents/ISCTE/Workspace/ProjectoPCD2015/src/contact.ser",
+		ContactObjectWriter.saveContactsToFile("/Users/GLFA/Documents/ISCTE/Workspace/ProjectoPCD2015/src/contact.ser",
 				contactsListModel);
-		
 	}
 
 	public JList<Contact> getContactsList() {
@@ -142,7 +133,6 @@ public class ContactsPanel extends JPanel{
 				insertContact(contactName);
 			}
 			if(e.getSource() == removeButton){
-				System.out.println(contactsList.getSelectedIndex());
 				contactsListModel.remove(contactsList.getSelectedIndex());
 			}
 

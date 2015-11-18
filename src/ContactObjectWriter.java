@@ -5,23 +5,21 @@ import java.util.ArrayList;
 
 import javax.swing.DefaultListModel;
 
+/**
+ * Esta classe implementa a gravacao de objectos do tipo 'Contacto' para um dado ficheiro.
+ * @author GLFA
+ *
+ */
 public class ContactObjectWriter{
 
-
-	private String filePath;
-	private DefaultListModel<Contact> contactsList;
-
 	/**
-	 * @param filePath
-	 * @param contactsListModel
+	 * Grava uma lista do tipo 'DefaultListModel' para um dado ficheiro, 
+	 * implementando a serializacao de objectos.
+	 * 
+	 * @param filePath	Destino do ficheiro onde os ficheiros vao ser gravados.
+	 * @param contactsList	Lista de ficheiros que ir‡ ser gravada.
 	 */
-	public ContactObjectWriter(String filePath, DefaultListModel<Contact> contactsListModel) {
-		super();
-		this.filePath = filePath;
-		this.contactsList = contactsListModel;
-	}
-
-	public void saveContactsToFile(){
+	public static void saveContactsToFile(String filePath, DefaultListModel<Contact> contactsList){
 		
 		ArrayList<Contact> contactsArrayList = DLMtoArrayList(contactsList);
 		
@@ -40,11 +38,11 @@ public class ContactObjectWriter{
 	}
 
 	/**
-	 * Converts a DefaultListModel list into a ArrayList.
+	 * Converte a DefaultListModel num ArrayList.
 	 * @param contactDLM
 	 * @return ArrayList 
 	 */
-	private ArrayList<Contact> DLMtoArrayList(DefaultListModel<Contact> contactDLM){
+	private static ArrayList<Contact> DLMtoArrayList(DefaultListModel<Contact> contactDLM){
 		
 		ArrayList<Contact> contacts = new ArrayList<Contact>();
 		
